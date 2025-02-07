@@ -26,7 +26,7 @@ const AuthPage = () => {
         {
           id: data.user.id, 
           email:email,
-          
+          name:name,
         },
       ]);
   
