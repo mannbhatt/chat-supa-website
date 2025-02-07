@@ -116,7 +116,7 @@ const AuthPage = () => {
       
 
       <input
-        type="text"
+        type="password"
         placeholder="Password"
         className="border p-2 mb-2 w-64"
         value={password}
