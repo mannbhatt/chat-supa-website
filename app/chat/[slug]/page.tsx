@@ -237,7 +237,7 @@ const ChatPage = () => {
 
   useEffect(() => {
     const fetchUsers = async () => {
-      setLoading(true);
+      
 
       if (selected === "All") {
         filteredUsers
@@ -248,7 +248,7 @@ const ChatPage = () => {
         ;
 
       }
-      setLoading(false);
+      
     };
     fetchUsers();
   }, [selected, session]);
