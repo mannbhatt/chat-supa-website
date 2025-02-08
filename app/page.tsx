@@ -1,9 +1,9 @@
 "use client";
 
-import { useState,useEffect } from "react";
+import { useState } from "react";
 import { Supabase } from "./utils/supabaseClient";
 import { useRouter } from "next/navigation";
-import { cookies } from 'next/headers'
+
 const AuthPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

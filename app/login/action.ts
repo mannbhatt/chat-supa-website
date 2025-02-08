@@ -32,7 +32,7 @@ export async function signup(formData: FormData) {
         
   }
 
-  const { data,error } = await supabase.auth.signUp(user)
+  const { error } = await supabase.auth.signUp(user)
 
   if (error) {
     redirect('/error')

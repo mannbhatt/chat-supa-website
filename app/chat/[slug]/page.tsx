@@ -1,5 +1,5 @@
 "use client";
-import { Session, User } from "@supabase/supabase-js";
+import { Session} from "@supabase/supabase-js";
 import { useRouter, useParams } from "next/navigation";
 import { useState, useEffect } from "react";
 import { createClient } from "@supabase/supabase-js";
@@ -23,7 +23,7 @@ interface LastMessageType {
 }
 
 const ChatPage = () => {
-  const router = useRouter();
+ 
   const params = useParams();
   const slug = params?.slug;
 
@@ -35,7 +35,7 @@ const ChatPage = () => {
   const [selected, setSelected] = useState<string>("All");
   const [loading, setLoading] = useState<boolean>(true);
   const [searchQuery, setSearchQuery] = useState<string>("");
-  const [FilteredUsers, setFilteredUsers] = useState<any[]>([]);
+  const [FilteredUsers, setFilteredUsers] = useState<UserType[]>([]);
   const [lastMessages, setLastMessages] = useState<Record<string, LastMessageType>>({});
 
   useEffect(() => {
@@ -234,13 +234,14 @@ const ChatPage = () => {
 
 
 
-
+  
   useEffect(() => {
+
     const fetchUsers = async () => {
       
-
+      
       if (selected === "All") {
-        filteredUsers
+        setFilteredUsers(filteredUsers)
 
       } else if (selected === "Unread") {
         const unreadUsers = await fetchUnreadUsers();
@@ -296,7 +297,7 @@ const ChatPage = () => {
 
         <div className="flex ">
           <div className="w-[50%] border-gray-300 space-y-3 pr-3">
-            {(selected === "All" ? filteredUsers : FilteredUsers).map((user) => {
+            {(selected==="All"? filteredUsers : FilteredUsers).map((user) => {
               const lastMsgData = lastMessages[user.id] || { content: "No messages yet", time: null };
 
               return (
