@@ -1,6 +1,6 @@
 "use client";
 import { Session} from "@supabase/supabase-js";
-import { useRouter, useParams } from "next/navigation";
+import { useParams } from "next/navigation";
 import { useState, useEffect } from "react";
 import { createClient } from "@supabase/supabase-js";
 import ChatBox from "@/app/component/ChatBox";
