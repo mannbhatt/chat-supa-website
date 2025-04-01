@@ -4,8 +4,7 @@ import { useState, useEffect, useRef } from "react"
 import { createClient } from "@supabase/supabase-js"
 import type { Session } from "@supabase/supabase-js"
 import { Send, Phone, Video, Info, Smile } from "lucide-react"
-import { Palanquin_Dark } from "next/font/google"
-
+import Image from "next/image"
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL as string,
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY as string,
@@ -252,7 +251,7 @@ const ChatBox = ({ session, selectedUser }: ChatBoxProps) => {
       )}
 
       <div className="bg-muted p-4 flex-grow h-[408px] overflow-y-auto no-scrollbar">
-        {messageGroups.map((group, groupIndex) => (
+        {messageGroups.map((group) => (
           <div key={group.date} className="mb-4">
             <div className="flex justify-center mb-4">
               <span className="px-3 py-1 bg-muted-foreground/20 rounded-full text-xs text-muted-foreground">
@@ -263,8 +262,7 @@ const ChatBox = ({ session, selectedUser }: ChatBoxProps) => {
             {group.messages.map((msg, msgIndex) => {
               const isSender = msg.sender_id === session?.user?.id
               const isFirstInSequence = msgIndex === 0 || group.messages[msgIndex - 1].sender_id !== msg.sender_id
-              const isLastInSequence =
-                msgIndex === group.messages.length - 1 || group.messages[msgIndex + 1].sender_id !== msg.sender_id
+              //const isLastInSequence = msgIndex === group.messages.length - 1 || group.messages[msgIndex + 1]./sender_id !== msg.sender_id
 
               return (
                 <div
@@ -272,9 +270,9 @@ const ChatBox = ({ session, selectedUser }: ChatBoxProps) => {
                   className={`flex ${isSender ? "justify-end " : "justify-start"} ${isFirstInSequence ? "mt-4" : "mt-1 ml-10"}`}
                 >
                   {!isSender && isFirstInSequence && (
-                    <img
+                    <Image
                       src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Warren_Buffett_at_the_2015_SelectUSA_Investment_Summit_%28cropped%29.jpg/220px-Warren_Buffett_at_the_2015_SelectUSA_Investment_Summit_%28cropped%29.jpg"
-                      
+                      alt="image"
                       className="w-8 h-8 rounded-full mr-2 mt-1"
                     />
                   )}
