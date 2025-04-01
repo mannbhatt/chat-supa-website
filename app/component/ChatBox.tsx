@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react"
 import { createClient } from "@supabase/supabase-js"
 import type { Session } from "@supabase/supabase-js"
 import { Send, Phone, Video, Info, Smile } from "lucide-react"
-import Image from "next/image"
+
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL as string,
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY as string,
@@ -270,7 +270,7 @@ const ChatBox = ({ session, selectedUser }: ChatBoxProps) => {
                   className={`flex ${isSender ? "justify-end " : "justify-start"} ${isFirstInSequence ? "mt-4" : "mt-1 ml-10"}`}
                 >
                   {!isSender && isFirstInSequence && (
-                    <Image
+                    <img
                       src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Warren_Buffett_at_the_2015_SelectUSA_Investment_Summit_%28cropped%29.jpg/220px-Warren_Buffett_at_the_2015_SelectUSA_Investment_Summit_%28cropped%29.jpg"
                       alt="image"
                       className="w-8 h-8 rounded-full mr-2 mt-1"

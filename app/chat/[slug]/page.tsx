@@ -5,7 +5,7 @@ import { useState, useEffect, useRef } from "react"
 import { createClient } from "@supabase/supabase-js"
 import ChatBox from "@/app/component/ChatBox"
 import { Search, MessageSquare, Bell, Moon, Sun } from "lucide-react"
-import Image from "next/image"
+
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL as string,
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY as string,
@@ -271,35 +271,37 @@ const ChatPage = () => {
         </div>
 
         <div className="space-x-3 flex mb-6 animate-slide-up" style={{ animationDelay: "0.1s" }}>
-          <button
-            className={`px-6 py-2.5 text-md font-medium rounded-full transition-all duration-300 ${
-              selected === "All"
-                ? "bg-primary  shadow-lg shadow-primary/30"
-                : "bg-card text-foreground hover:bg-muted"
-            }
-            ${
-              darkMode ? "text-black":"text-black"
-            }
-            `}
-            onClick={() => setSelected("All")}
-          >
-            All
-          </button>
-          <button
-            className={`px-6 py-2.5 text-md font-medium rounded-full transition-all duration-300 flex items-center ${
-              selected === "Unread"
-                ? "bg-primary  shadow-lg shadow-primary/30"
-                : "bg-card text-foreground hover:bg-muted"
-            }
-             ${
-              darkMode ? "text-black":"text-white"
-            }
-            `}
-            onClick={() => setSelected("Unread")}
-          >
-            <span>Unread</span>
-            <Bell size={16} className="ml-2" />
-          </button>
+        <button
+  className={`px-6 py-2.5 text-md font-medium rounded-full transition-all duration-300 ${
+    selected === "All"
+      ? darkMode
+        ? "bg-primary text-black shadow-lg shadow-primary/30"
+        : "bg-primary text-white shadow-lg shadow-primary/30"
+      : darkMode
+      ? "bg-card text-white hover:bg-muted"
+      : "bg-card text-black hover:bg-muted"
+  }`}
+  onClick={() => setSelected("All")}
+>
+  All
+</button>
+
+<button
+  className={`px-6 py-2.5 text-md font-medium rounded-full transition-all duration-300 flex items-center ${
+    selected === "Unread"
+      ? darkMode
+        ? "bg-primary text-black shadow-lg shadow-primary/30"
+        : "bg-primary text-white shadow-lg shadow-primary/30"
+      : darkMode
+      ? "bg-card text-white hover:bg-muted"
+      : "bg-card text-black hover:bg-muted"
+  }`}
+  onClick={() => setSelected("Unread")}
+>
+  <span>Unread</span>
+  <Bell size={16} className="ml-2" />
+</button>
+
         </div>
 
         <div className="flex flex-col lg:flex-row gap-6 animate-slide-up" style={{ animationDelay: "0.2s" }}>
@@ -318,7 +320,7 @@ const ChatPage = () => {
                   style={{ animationDelay: `${0.1 * index}s` }}
                 >
                   <div className="relative ">
-                    <Image
+                    <img
                       src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Warren_Buffett_at_the_2015_SelectUSA_Investment_Summit_%28cropped%29.jpg/220px-Warren_Buffett_at_the_2015_SelectUSA_Investment_Summit_%28cropped%29.jpg"
                       alt={user.name}
                       className="rounded-full w-[50px] h-[50px] object-cover border-2 border-border"
