@@ -5,7 +5,7 @@ import { useState, useEffect, useRef } from "react"
 import { createClient } from "@supabase/supabase-js"
 import ChatBox from "@/app/component/ChatBox"
 import { Search, MessageSquare, Bell, Moon, Sun } from "lucide-react"
-
+import Image from "next/image"
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL as string,
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY as string,
@@ -278,7 +278,7 @@ const ChatPage = () => {
                 : "bg-card text-foreground hover:bg-muted"
             }
             ${
-              darkMode ? "text-black":"text-white"
+              darkMode ? "text-black":"text-black"
             }
             `}
             onClick={() => setSelected("All")}
@@ -318,7 +318,7 @@ const ChatPage = () => {
                   style={{ animationDelay: `${0.1 * index}s` }}
                 >
                   <div className="relative ">
-                    <img
+                    <Image
                       src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Warren_Buffett_at_the_2015_SelectUSA_Investment_Summit_%28cropped%29.jpg/220px-Warren_Buffett_at_the_2015_SelectUSA_Investment_Summit_%28cropped%29.jpg"
                       alt={user.name}
                       className="rounded-full w-[50px] h-[50px] object-cover border-2 border-border"
